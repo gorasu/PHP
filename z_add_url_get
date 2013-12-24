@@ -8,8 +8,9 @@
 *
 **/
 function z_add_url_get($a_data,$url = false){
+         $http = $_SERVER['HTTPS'] ? 'https':'http';
         if($url === false){
-               $url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+               $url = $http.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         }
     $query_str = parse_url($url);
     $path = !empty($query_str['path']) ? $query_str['path'] : '';
