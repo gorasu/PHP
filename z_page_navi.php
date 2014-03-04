@@ -162,6 +162,14 @@
 
         }
         
+        function is_current_page($num_or_str){
+            if(is_numeric($num_or_str)){
+                return $num_or_str == $this->get_param('current_page');
+            }
+            return $num_or_str == $this->anchor_replace($this->get_param('current_page'));
+            
+        }
+        
         
         function set_params($a_data){
             $this->_a_params = $a_data;
