@@ -33,7 +33,7 @@
  */
 
 
-    class page_navi {
+    class obth_page_navi {
             private $_a_params = array();
             private $_anchor = '#p_num#';
 
@@ -48,6 +48,7 @@
                                'anchor'=>$this->_anchor, // Якорь вместо которого подставляется номер страницы
                                'clean_url'=>false, // Чистая ссылка для  генрации первой страницы
                                'hook_url_prepare'=>false, // Чистая ссылка для  генрации первой страницы
+                               'separator'=>false
                                
                                );
             $a_required = array('current_page','template_links_page_navi','count_posts_on_page','all_posts_count');
@@ -73,6 +74,23 @@
             $a_return['left_page'] = $this->left_pages();
             $a_return['right_page'] = $this->right_pages();
             $a_return['center_page'] = $this->center_pages();
+            if($this->get_param('separator')){
+                    $a_sep = array('separator_1'=>$this->get_param('separator'));
+                    $a_sep2 = array('separator_2'=>$this->get_param('separator'));
+		    
+                    $a_return['with_separator'] = array();
+                    
+                    if($a_return['left_page']){
+				$a_return['with_separator'] += $a_return['left_page']+$a_sep;
+		    }
+                    
+                                $a_return['with_separator'] += $a_return['center_page'];
+                    
+		    if($a_return['right_page']){
+				$a_return['with_separator'] +=$a_sep2 + $a_return['right_page'] ;
+		    }	
+                
+            }
     
             return $a_return;
 
@@ -123,6 +141,8 @@
             return $a_return;
         }
         function right_pages(){
+            $a_return = array();
+            
             $center_end = $this->get_param('current_page') + $this->get_param('count_preview_center_right');
             $right_iteration = $this->get_param('count_pages') - $this->get_param('count_preview_right');
             if($center_end > $right_iteration){
@@ -178,6 +198,9 @@
             return $this->_a_params[$name];
         }        
         
+        function is_separator($name){
+            return strpos($name,'separator') !== false;
+        }
 
 		
 }
