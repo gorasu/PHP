@@ -1,10 +1,10 @@
 <?
-/** zptc_return_data
+/** z_return_data
 *
 * Модуль предназначен для избежания множественного определения аргументов функции.
 *
 */
-    class zptc_return_data{
+    class z_return_data{
    	 private $_a_default; // данные по умолчанию
    	 private $_a_required; //  обязательные данные
    	 private $_exit; // прекращать ли выполнения скрипта если нет обязательных данных
