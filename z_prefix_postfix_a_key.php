@@ -1,4 +1,15 @@
 <?php
+ /** z_prefix_postfix_a_key
+ *
+ * @param $array  - массив к ключам которого будут добавлены prefix & postfix
+ * @param $prefix  - префикс
+ * @param $postfix  - постфикс
+ *  
+ * @return $array
+ * 
+ */
+ 
+ 
  
  function z_prefix_postfix_a_key($array,$prefix = '',$postfix = ''){
       
