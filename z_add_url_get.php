@@ -8,7 +8,7 @@
 *
 **/
 function z_add_url_get($a_data,$url = false){
-         $http = $_SERVER['HTTPS'] ? 'https':'http';
+         $http =isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !='off' ? 'https':'http';
         if($url === false){
                $url = $http.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         }
