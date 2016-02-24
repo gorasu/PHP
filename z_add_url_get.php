@@ -14,6 +14,7 @@ function z_add_url_get($a_data,$url = false){
         }
     $query_str = parse_url($url);
     $path = !empty($query_str['path']) ? $query_str['path'] : '';
+    $fragment = !empty($query_str['fragment']) ? '#'.$query_str['fragment'] : '';
     $return_url = $query_str['scheme'].'://'.$query_str['host'].$path;
     $query_str = !empty($query_str['query']) ? $query_str['query'] : false;
     $a_query = array();
@@ -25,7 +26,7 @@ function z_add_url_get($a_data,$url = false){
     if($s_query){
     $s_query = '?'.$s_query;    
     }
-    return $return_url.$s_query;
+    return $return_url.$s_query.$fragment;
     }
 
        $url = 'http://z-site.ru/?my_param=hello&my_param_2=bye';
